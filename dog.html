@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dog Prototypes</title>
+        <script>
+            
+                // Dog object constructor that takes as parameter a dogparams object.
+                function Dog(params) {
+                    this.name = params.name;
+                    this.breed = params.breed;
+                    this.weight = params.weight;
+                };
+
+                // Creating a ShowDog obj constructor 
+                function ShowDog(params) {
+                    this.name = params.name;
+                    this.breed = params.breed;
+                    this.weight = params.weight;
+                    this.handler = params.handler
+                };
+
+                // Creating a ShowDog prototype which will be inheriting behavior from the Dog prototype.
+                ShowDog.prototype = Object.create(Dog.prototype);
+                // Now I can give my ShowDog prototype (which is a Dog obj) some custome method's. Plus to the ones that it inherits from the Dog prototype.
+                ShowDog.prototype.leaque = "Webville";
+                ShowDog.prototype.stack = function() {
+                    console.log("Stack");
+                };
+                ShowDog.prototype.gait = function(pase) {
+                    console.log(pase + "ing");
+                };
+                ShowDog.prototype.bait = function() {
+                    console.log("Bait");
+                };
+                ShowDog.prototype.groom = function() {
+                    console.log("Groom");
+                };
+
+
+                // Before intsancieting the Dog objects I am creating a Dog prototype to be able to inherit behavior so i don't over duplicate code when instancieting Dog objects.
+                Dog.prototype.species = "canine";
+                Dog.prototype.bark = function() {
+                    if (this.weight > 20) {
+                        console.log("WOOF WOOF");
+                    } else {
+                        console.log("woof woof");
+                    }
+                };
+                Dog.prototype.run = function() {
+                    console.log("Run");
+                };
+                Dog.prototype.wag = function() {
+                    console.log("Wag");
+                };
+
+                // Here I am creating all the params for the actual Dog objects. And show Dog objects.
+                var metseParams = {
+                    name: "Metse",
+                    breed: "Husky-Akita",
+                    weight: 21
+                };
+                var bebaParams = {
+                    name: "BeBa", 
+                    breed: "butterfly mix",
+                    weight: 7
+                };
+                var bullyParams = {
+                    name: "Bully",
+                    breed: "American Akita",
+                    weight: 40
+                };
+
+                var fluffyParams = {
+                    name: "Fluffy",
+                    breed: "mini Akita",
+                    weight: 8,
+                    handler: "Someone"
+                };
+
+                var woolfParams = {
+                    name: "Woolf",
+                    breed: "Husky mix",
+                    weight: 18,
+                    handler: "George"
+                };
+
+                // Here I am instancieting the Dog objects and showDog obj.
+                var metse = new Dog(metseParams);
+                var beba = new Dog(bebaParams);
+                var bully = new Dog(bullyParams);
+                var fluffy = new ShowDog(fluffyParams);
+                var woolf = new ShowDog(woolfParams);
+
+                beba.bark = function() {
+                    console.log("WOOF WOOOF WOOF WOOOF WOOF!");
+                };
+
+                // Let's test our code 
+                metse.bark();
+                metse.run();
+                metse.wag();
+
+                beba.bark();
+                beba.run();
+                beba.wag();
+
+                bully.bark();
+                bully.run();
+                bully.wag();
+
+                fluffy.bark();
+                fluffy.run();
+                fluffy.wag();
+                fluffy.stack();
+                fluffy.gait("run");
+                fluffy.gait("trab");
+
+                woolf.bark();
+                woolf.run();
+                woolf.wag();
+                woolf.stack();
+                woolf.gait("galop");
+                woolf.gait("walk");
+
+                 console.log(beba);
+                 console.log(woolf);
+            
+        </script>
+    </head>
+    <body>
+        <h1>Let's create some dog prototypes check the console.</h1>
+    </body>
+</html>
