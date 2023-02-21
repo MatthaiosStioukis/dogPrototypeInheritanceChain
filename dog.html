@@ -22,6 +22,8 @@
 
                 // Creating a ShowDog prototype which will be inheriting behavior from the Dog prototype.
                 ShowDog.prototype = Object.create(Dog.prototype);
+                // I have to explicity set up the ShowDogs constructor propertie 
+                ShowDog.prototype.constructor = ShowDog;
                 // Now I can give my ShowDog prototype (which is a Dog obj) some custome method's. Plus to the ones that it inherits from the Dog prototype.
                 ShowDog.prototype.leaque = "Webville";
                 ShowDog.prototype.stack = function() {
@@ -123,8 +125,21 @@
                 woolf.gait("galop");
                 woolf.gait("walk");
 
-                 console.log(beba);
-                 console.log(woolf);
+                if (beba instanceof Dog) {
+                    console.log("Beba is a Dog");
+                };
+                if (beba instanceof ShowDog) {
+                    console.log("Beba is a Show Dog");
+                };
+                if (woolf instanceof Dog) {
+                    console.log("Woolf is a Dog");
+                };
+                if (woolf instanceof ShowDog) {
+                    console.log("Woolf is a Show Dog");
+                };
+
+                console.log("Bebas constructor is " + beba.constructor);
+                console.log("Woolfs constructor is " + woolf.constructor);
             
         </script>
     </head>
