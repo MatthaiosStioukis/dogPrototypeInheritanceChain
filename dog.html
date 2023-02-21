@@ -14,9 +14,7 @@
 
                 // Creating a ShowDog obj constructor 
                 function ShowDog(params) {
-                    this.name = params.name;
-                    this.breed = params.breed;
-                    this.weight = params.weight;
+                    Dog.call(this, params);
                     this.handler = params.handler
                 };
 
